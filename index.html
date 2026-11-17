@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BNN Power Tools</title>
+<meta name="description" content="A growing collection of focused instruments for football video, data, visualisation and spatial analysis. Every tool is clearly labelled, from concept to release.">
+<meta name="theme-color" content="#17191C">
+<meta property="og:title" content="BNN Power Tools">
+<meta property="og:description" content="Football analysis deserves better tools.">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300..900&family=Schibsted+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root {
+    --ink: #17191C; --ink-950: #0E0F11; --ink-800: #22252A; --ink-700: #2E3238; --ink-400: #8A9099; --ink-300: #B4B8BE;
+    --paper: #F2EBDD; --chalk: #FBF8F1;
+    --lime: #B9F227; --flare: #FF6B35; --solar: #FFC83D; --scan: #25C6D9; --ultra: #6B50FF; --ultra-light: #9C8BFF;
+    --frost: #4FE0A8; --pulse: #FF4F9A; --cobalt: #2F5BFF;
+    --f-display: "Unbounded", "Arial Black", system-ui, sans-serif;
+    --f-sans: "Schibsted Grotesk", "Helvetica Neue", Arial, system-ui, sans-serif;
+    --f-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+    --spectrum: linear-gradient(90deg, var(--flare) 0 12.5%, var(--solar) 12.5% 25%, var(--lime) 25% 37.5%, var(--frost) 37.5% 50%, var(--scan) 50% 62.5%, var(--cobalt) 62.5% 75%, var(--ultra) 75% 87.5%, var(--pulse) 87.5% 100%);
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body { margin: 0; background: var(--ink); color: var(--paper); font: 400 17px/1.55 var(--f-sans); -webkit-font-smoothing: antialiased; }
+  h1, h2, h3, p { margin: 0; }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; }
+  .strip { height: 6px; background: var(--spectrum); }
+  .wrap { max-width: 1200px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left)); padding-right: max(20px, env(safe-area-inset-right)); }
+  .plate { font: 600 11.5px/1.4 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; }
+  .muted { color: var(--ink-400); }
+  .notch { clip-path: polygon(0 0, calc(100% - var(--n, 12px)) 0, 100% var(--n, 12px), 100% 100%, 0 100%); }
+
+  /* nav */
+  .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 18px; flex-wrap: wrap; }
+  .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; font: 800 16px/1 var(--f-sans); letter-spacing: -.01em; }
+  .brand svg { width: 48px; height: auto; }
+  .nav nav { display: flex; gap: 24px; font: 500 15px/1 var(--f-sans); flex-wrap: wrap; }
+  .nav nav a { text-decoration: none; padding-bottom: 4px; border-bottom: 2px solid transparent; }
+  .nav nav a:hover { border-color: var(--lime); }
+
+  /* buttons */
+  .btn { --n: 8px; display: inline-flex; align-items: center; gap: 8px; min-height: 46px; padding: 0 20px; font: 600 15px/1 var(--f-sans); text-decoration: none; border: 2px solid transparent; clip-path: polygon(0 0, calc(100% - var(--n)) 0, 100% var(--n), 100% 100%, 0 100%); transition: transform 120ms cubic-bezier(.2,.8,.2,1), filter 120ms; }
+  .btn:hover { filter: brightness(.94); }
+  .btn:active { transform: translate(1px, 1px); }
+  .btn:focus-visible { outline-offset: -5px; outline-color: var(--ink); }
+  .btn-primary { background: var(--lime); color: var(--ink); }
+  .btn-secondary { background: transparent; color: var(--paper); border-color: var(--paper); }
+  .btn-secondary:focus-visible { outline-color: var(--lime); }
+
+  /* hero */
+  .hero { position: relative; overflow: hidden; padding-block: clamp(48px, 9vw, 120px) clamp(56px, 9vw, 112px); }
+  .hero .pitch { position: absolute; width: 140%; right: -45%; top: -10%; height: auto; color: var(--paper); opacity: .09; pointer-events: none; }
+  .hero-grid { position: relative; display: grid; gap: 48px; align-items: center; }
+  @media (min-width: 900px) { .hero-grid { grid-template-columns: 1.4fr 1fr; } }
+  .hero h1 { margin-top: 20px; font: 800 clamp(2.5rem, 1.3rem + 5vw, 5.6rem)/.98 var(--f-display); letter-spacing: -.035em; text-wrap: balance; }
+  .hero h1 em { font-style: normal; color: var(--lime); }
+  .hero .lead { margin-top: 28px; max-width: 54ch; font-size: clamp(1.05rem, 1rem + .35vw, 1.3rem); color: var(--ink-300); }
+  .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+  .lens-wrap { position: relative; width: min(420px, 100%); aspect-ratio: 1; justify-self: center; }
+  .lens { position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #B9F227 0 14%, #99C725 14% 28%, #789B23 28% 42%, #587020 42% 57%, #37441E 57% 74%, #22252A 74% 100%); }
+  .lens-wrap .readout { position: absolute; left: 0; bottom: 8%; background: var(--ink); border: 1px solid var(--ink-700); padding: 6px 10px; color: var(--lime); }
+
+  /* sections */
+  section { padding-block: clamp(56px, 8vw, 104px); }
+  .sec-head { display: grid; gap: 14px; max-width: 760px; margin-bottom: 40px; }
+  .sec-head h2 { font: 800 clamp(1.9rem, 1.2rem + 2.6vw, 3.2rem)/1.02 var(--f-display); letter-spacing: -.025em; text-wrap: balance; }
+  .sec-head p { color: var(--ink-300); font-size: 1.1rem; max-width: 62ch; }
+  .eyebrow { color: var(--lime); }
+  .band-ink { background: var(--ink-950); }
+
+  .notice { display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border: 1px dashed var(--ink-400); margin-bottom: 32px; max-width: 760px; font-size: 15px; color: var(--ink-300); }
+  .notice .plate { color: var(--paper); white-space: nowrap; padding-top: 2px; }
+
+  /* tool cards */
+  .tools { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+  .card { --n: 12px; display: grid; grid-template-rows: auto 1fr auto auto; background: var(--ink-800); border: 1px solid var(--ink-700); min-width: 0; }
+  .card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; padding: 18px 18px 0; }
+  .card-top svg { width: 52px; height: 52px; flex: none; }
+  .card-body { display: grid; gap: 10px; align-content: start; padding: 16px 18px 20px; }
+  .card h3 { font: 800 1.6rem/1 var(--f-display); letter-spacing: -.02em; }
+  .card p { font-size: 15.5px; line-height: 1.5; color: var(--ink-300); }
+  .card .bandstrip { height: 10px; }
+  .card-foot { display: flex; justify-content: space-between; gap: 8px; padding: 12px 18px; border-top: 1px solid var(--ink-700); }
+  .t-shear { display: inline-block; transform: skewX(-8deg); transform-origin: left bottom; }
+  .t-wide { font-weight: 700 !important; text-transform: uppercase; letter-spacing: .05em !important; font-size: 1.3rem !important; }
+  .t-extrude { color: var(--ultra-light); text-shadow: 2px 2px 0 #4F7FF0, 4px 4px 0 #33AEE1; }
+  .slot { display: grid; align-content: center; gap: 10px; padding: 22px; border: 2px dashed var(--ink-400); min-height: 220px; }
+  .slot h3 { font: 700 1.3rem/1.1 var(--f-display); color: var(--ink-300); }
+  .slot p { color: var(--ink-400); font-size: 15px; }
+
+  .badge { --n: 6px; display: inline-flex; align-items: center; gap: 6px; height: 22px; padding: 0 9px; font: 600 10.5px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; border: 1px solid currentColor; color: var(--paper); clip-path: polygon(0 0, calc(100% - var(--n)) 0, 100% var(--n), 100% 100%, 0 100%); }
+  .b-concept { border-style: dashed; }
+  .b-experiment { background: repeating-linear-gradient(135deg, rgba(242,235,221,.25) 0 2px, transparent 2px 6px); }
+  .b-preview { background: linear-gradient(90deg, rgba(242,235,221,.25) 50%, transparent 50%); }
+  .b-beta { background: linear-gradient(90deg, rgba(242,235,221,.25) 67%, transparent 67%); }
+  .b-released { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+  .b-released::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--lime); }
+  .b-archived { border-style: dotted; color: var(--ink-400); }
+
+  /* principles */
+  .principles { display: grid; gap: 2px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .principle { background: var(--ink-800); padding: 24px 22px; display: grid; gap: 10px; align-content: start; }
+  .principle h3 { font: 700 1.2rem/1.2 var(--f-sans); }
+  .principle p { color: var(--ink-300); font-size: 15.5px; }
+
+  .legend { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .legend div { display: grid; grid-template-columns: 130px 1fr; gap: 14px; align-items: center; padding: 12px 0; border-top: 1px solid var(--ink-700); font-size: 15px; color: var(--ink-300); }
+
+  footer { padding-block: 0 40px; }
+  .foot { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; padding-top: 32px; }
+  .foot svg { width: 56px; height: auto; color: var(--paper); }
+  .foot p { color: var(--ink-400); font-size: 14px; }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="bnn" viewBox="0 0 105 68">
+      <g fill="currentColor">
+        <path fill-rule="evenodd" d="M0 0H12A17 17 0 0 1 12 34A17 17 0 0 1 12 68H0Z M12 12A5 5 0 0 1 12 22Z M12 46A5 5 0 0 1 12 56Z"/>
+        <path d="M41 0H53V68H41Z M67 0H79V68H67Z M93 0H105V68H93Z"/>
+        <path d="M41 0H53L79 68H67Z M67 0H79L105 68H93Z"/>
+      </g>
+    </symbol>
+    <symbol id="pitch" viewBox="0 0 105 68">
+      <g fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke">
+        <rect x="0" y="0" width="105" height="68" vector-effect="non-scaling-stroke"/>
+        <line x1="52.5" y1="0" x2="52.5" y2="68" vector-effect="non-scaling-stroke"/>
+        <circle cx="52.5" cy="34" r="9.15" vector-effect="non-scaling-stroke"/>
+        <rect x="88.5" y="13.84" width="16.5" height="40.32" vector-effect="non-scaling-stroke"/>
+        <rect x="99.5" y="24.84" width="5.5" height="18.32" vector-effect="non-scaling-stroke"/>
+        <path d="M88.5 26.69A9.15 9.15 0 0 0 88.5 41.31" vector-effect="non-scaling-stroke"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="strip" role="presentation"></div>
+
+<header class="wrap nav">
+  <a class="brand" href="#top" aria-label="BNN Power Tools, home">
+    <svg viewBox="-2 -2 109 72" aria-hidden="true">
+      <polygon points="0,0 30,15 0,30" fill="#FF6B35"/>
+      <rect x="37.5" y="0" width="30" height="30" fill="#FFC83D"/>
+      <circle cx="90" cy="15" r="15" fill="#25C6D9"/>
+      <polygon points="15,37.5 28,45 28,60 15,67.5 2,60 2,45" fill="#6B50FF"/>
+      <polygon points="37.5,67.5 52.5,37.5 67.5,37.5 52.5,67.5" fill="#4FE0A8"/>
+      <rect x="76" y="38.5" width="28" height="28" fill="none" stroke="#F2EBDD" stroke-width="2" stroke-dasharray="4 3"/>
+    </svg>
+    <span>BNN Power Tools</span>
+  </a>
+  <nav aria-label="Main">
+    <a href="#tools">Tools</a>
+    <a href="#principles">Principles</a>
+    <a href="#status">Status</a>
+    <a href="https://github.com/BNN-Power-Tools">GitHub</a>
+  </nav>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <svg class="pitch" viewBox="0 0 105 68" aria-hidden="true"><use href="#pitch"/></svg>
+    <div class="wrap hero-grid">
+      <div>
+        <p class="plate eyebrow">BNN Power Tools · Vol. 01</p>
+        <h1>Football analysis deserves <em>better tools.</em></h1>
+        <p class="lead">A growing collection of focused instruments for football video, data, visualisation and spatial analysis. Each tool does one job, has a character of its own, and is honest about whether it's a concept, an experiment or a release.</p>
+        <div class="ctas">
+          <a class="btn btn-primary" href="#tools">See the tools</a>
+          <a class="btn btn-secondary" href="https://github.com/BNN-Power-Tools">Follow development</a>
+        </div>
+      </div>
+      <div class="lens-wrap" aria-hidden="true">
+        <div class="lens"></div>
+        <span class="readout plate">x 88.5 · y 34.0</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="tools" class="band-ink">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="plate eyebrow">In the case</p>
+        <h2>One tool, one job, done properly.</h2>
+        <p>Every tool belongs to a family and carries a catalogue code. Video tools are warm, visualisation tools are blue, and the code never changes.</p>
+      </div>
+      <p class="notice"><span class="plate">Note</span><span>Nothing here is released yet. All four tools are concepts we are designing and exploring. Their names are working titles and may change.</span></p>
+      <div class="tools">
+        <article class="card notch">
+          <div class="card-top">
+            <svg viewBox="0 0 48 48" role="img" aria-label="VideoFX icon"><polygon points="0,0 40,0 48,8 48,48 0,48" fill="#FF6B35"/><g fill="#17191C"><polygon points="12,10 27.43,19 12,19"/><polygon points="12,21.5 31.71,21.5 36,24 31.71,26.5 12,26.5"/><polygon points="12,29 27.43,29 12,38"/><circle cx="37" cy="36" r="3"/></g></svg>
+            <span class="badge b-concept">Concept</span>
+          </div>
+          <div class="card-body">
+            <p class="plate muted">VID·01 · Video</p>
+            <h3><span class="t-shear">VideoFX</span></h3>
+            <p>Event data, drawn onto match video. Choose the events and it finds the moments, then turns them into clips and overlays.</p>
+          </div>
+          <div class="bandstrip" style="background:linear-gradient(90deg,#FF6B35 0 16.66%,#FF6549 0 33.33%,#FF605D 0 50%,#FF5A72 0 66.66%,#FF5586 0 83.33%,#FF4F9A 0)"></div>
+          <div class="card-foot plate"><span class="muted">Video</span><span>Concept</span></div>
+        </article>
+
+        <article class="card notch">
+          <div class="card-top">
+            <svg viewBox="0 0 48 48" role="img" aria-label="DataMorph icon"><polygon points="0,0 40,0 48,8 48,48 0,48" fill="#FFC83D"/><g fill="#17191C"><rect x="7" y="7" width="10" height="10"/><rect x="21" y="7" width="10" height="10" rx="1.25"/><rect x="35" y="7" width="10" height="10" rx="2.5"/><rect x="7" y="21" width="10" height="10" rx="1.25"/><rect x="21" y="21" width="10" height="10" rx="2.5"/><rect x="35" y="21" width="10" height="10" rx="3.75"/><rect x="7" y="35" width="10" height="10" rx="2.5"/><rect x="21" y="35" width="10" height="10" rx="3.75"/><rect x="35" y="35" width="10" height="10" rx="5"/></g></svg>
+            <span class="badge b-concept">Concept</span>
+          </div>
+          <div class="card-body">
+            <p class="plate muted">DAT·01 · Data</p>
+            <h3 aria-label="DataMorph"><span aria-hidden="true" style="font-weight:250">D</span><span aria-hidden="true" style="font-weight:330">a</span><span aria-hidden="true" style="font-weight:410">t</span><span aria-hidden="true" style="font-weight:490">a</span><span aria-hidden="true" style="font-weight:570">M</span><span aria-hidden="true" style="font-weight:650">o</span><span aria-hidden="true" style="font-weight:730">r</span><span aria-hidden="true" style="font-weight:810">p</span><span aria-hidden="true" style="font-weight:900">h</span></h3>
+            <p>Reshape football data without writing the same script again. Convert, clean and combine provider data into one model, with every step visible.</p>
+          </div>
+          <div class="bandstrip" style="background:linear-gradient(90deg,#FFC83D 0 16.66%,#DCCD52 0 33.33%,#B9D268 0 50%,#95D67D 0 66.66%,#72DB93 0 83.33%,#4FE0A8 0)"></div>
+          <div class="card-foot plate"><span class="muted">Data</span><span>Concept</span></div>
+        </article>
+
+        <article class="card notch">
+          <div class="card-top">
+            <svg viewBox="0 0 48 48" role="img" aria-label="PitchScope icon"><polygon points="0,0 40,0 48,8 48,48 0,48" fill="#25C6D9"/><circle cx="24" cy="24" r="13" fill="none" stroke="#17191C" stroke-width="4"/><path d="M22 5h4v7h-4z M22 36h4v7h-4z M5 22h7v4H5z M36 22h7v4h-7z" fill="#17191C"/><circle cx="28" cy="20" r="3.5" fill="#17191C"/></svg>
+            <span class="badge b-concept">Concept</span>
+          </div>
+          <div class="card-body">
+            <p class="plate muted">VIS·01 · Visualisation</p>
+            <h3 class="t-wide">PitchScope</h3>
+            <p>Pitch graphics that are accurate first and beautiful second: shot maps, pass networks and contour maps on a geometrically correct pitch.</p>
+          </div>
+          <div class="bandstrip" style="background:linear-gradient(90deg,#25C6D9 0 16.66%,#27B1E1 0 33.33%,#299BE8 0 50%,#2B86F0 0 66.66%,#2D70F7 0 83.33%,#2F5BFF 0)"></div>
+          <div class="card-foot plate"><span class="muted">Visualisation</span><span>Concept</span></div>
+        </article>
+
+        <article class="card notch">
+          <div class="card-top">
+            <svg viewBox="0 0 48 48" role="img" aria-label="Dimension icon"><polygon points="0,0 40,0 48,8 48,48 0,48" fill="#6B50FF"/><g fill="#FBF8F1"><polygon points="24,24 40,32 24,40 8,32" opacity=".35"/><polygon points="24,16 40,24 24,32 8,24" opacity=".65"/><polygon points="24,8 40,16 24,24 8,16"/></g><line x1="32" y1="12" x2="16" y2="20" stroke="#6B50FF" stroke-width="2"/></svg>
+            <span class="badge b-concept">Concept</span>
+          </div>
+          <div class="card-body">
+            <p class="plate muted">DIM·01 · Dimension</p>
+            <h3 class="t-extrude">Dimension</h3>
+            <p>See a match in space and time at once. Explore tracking data as a volume: scrub through phases, slice by time, compare shapes.</p>
+          </div>
+          <div class="bandstrip" style="background:linear-gradient(90deg,#6B50FF 0 16.66%,#5D68F7 0 33.33%,#4F7FF0 0 50%,#4197E8 0 66.66%,#33AEE1 0 83.33%,#25C6D9 0)"></div>
+          <div class="card-foot plate"><span class="muted">Dimension</span><span>Concept</span></div>
+        </article>
+
+        <div class="slot">
+          <p class="plate muted">DEV·— · Developer</p>
+          <h3>The next tool</h3>
+          <p>A slot is kept open for developer tools: data conversion, libraries and APIs. Nothing is assigned yet.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="principles">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="plate eyebrow">How we build</p>
+        <h2>Instruments, not platforms.</h2>
+      </div>
+      <div class="principles">
+        <div class="principle"><span class="plate muted">01</span><h3>One tool, one job</h3><p>Each tool does a job you could name in one sentence, and does it properly.</p></div>
+        <div class="principle"><span class="plate muted">02</span><h3>Show the working</h3><p>Methods, data sources and limitations are documented, not hidden.</p></div>
+        <div class="principle"><span class="plate muted">03</span><h3>Built on the pitch</h3><p>Everything is drawn on football's real geometry: 105 × 68, the 9.15 m circle, the 16.5 m box.</p></div>
+        <div class="principle"><span class="plate muted">04</span><h3>Honest labels</h3><p>Every tool says whether it's a concept, an experiment or a release. When in doubt, the less mature label wins.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="status" class="band-ink">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="plate eyebrow">Reading the labels</p>
+        <h2>The badge fills up as a tool matures.</h2>
+      </div>
+      <div class="legend">
+        <div><span><span class="badge b-concept">Concept</span></span><span>An idea with design work. No usable software yet.</span></div>
+        <div><span><span class="badge b-experiment">Experiment</span></span><span>A working prototype. It may change or disappear.</span></div>
+        <div><span><span class="badge b-preview">Preview</span></span><span>Usable by invitation. Features may change.</span></div>
+        <div><span><span class="badge b-beta">Beta</span></span><span>Public and mostly stable, with known gaps.</span></div>
+        <div><span><span class="badge b-released">Released</span></span><span>Supported, versioned and documented.</span></div>
+        <div><span><span class="badge b-archived">Archived</span></span><span>No longer maintained. Kept for reference.</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="strip" role="presentation"></div>
+  <div class="wrap foot">
+    <svg viewBox="0 0 105 68" role="img" aria-label="BNN"><use href="#bnn"/></svg>
+    <p>BNN Power Tools · Vol. 01 · All tools shown are concepts.</p>
+  </div>
+</footer>
+
+</body>
+</html>
