@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>BNN Power Tools</title>
-<meta name="description" content="A growing collection of focused instruments for football video, data, visualisation and spatial analysis. Every tool is clearly labelled, from concept to release.">
+<meta name="description" content="One platform for match video and data, with focused instruments on top: video clips, accumulating data, tactics boards, data layers and training drill design. All in concept stage.">
 <meta name="theme-color" content="#17191C">
 <meta property="og:title" content="BNN Power Tools">
 <meta property="og:description" content="Football analysis deserves better tools.">
@@ -118,6 +118,22 @@
   .foot { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; padding-top: 32px; }
   .foot svg { width: 56px; height: auto; color: var(--paper); }
   .foot p { color: var(--ink-400); font-size: 14px; }
+  .platform-diagram { display: grid; gap: 12px; }
+  .inst-row { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
+  .inst-chip { display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: var(--ink-800); border: 1px solid var(--ink-700); font: 700 15px/1.15 var(--f-sans); text-decoration: none; min-width: 0; }
+  .inst-chip:hover { border-color: var(--ink-400); }
+  .inst-chip svg { width: 36px; height: 36px; flex: none; }
+  .inst-chip small { display: block; margin-top: 3px; font: 600 10.5px/1.4 var(--f-mono); letter-spacing: .12em; color: var(--ink-400); }
+  .link { color: var(--ink-400); padding-left: 2px; }
+  .core { --n: 20px; background: var(--paper); color: var(--ink); padding: 0 24px 24px; display: grid; gap: 12px; }
+  .core .strip { margin: 0 -24px 8px; }
+  .core-head { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; }
+  .core h3 { font: 800 clamp(1.3rem, 1rem + 1.2vw, 1.9rem)/1.05 var(--f-display); letter-spacing: -.02em; }
+  .core p { color: #3c4047; max-width: 70ch; }
+  .core .badge { color: var(--ink); }
+  .core-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .core-tags span { font: 500 12px/1.5 var(--f-mono); background: #E8E0CF; padding: 2px 8px; }
+  .card h3:not([class]) { font-weight: 800; }
 </style>
 </head>
 <body>
@@ -141,6 +157,11 @@
         <path d="M88.5 26.69A9.15 9.15 0 0 0 88.5 41.31" vector-effect="non-scaling-stroke"/>
       </g>
     </symbol>
+    <symbol id="t-videofx" viewBox="0 0 48 48"><polygon points="0,0 40,0 48,8 48,48 0,48" fill="#FF6B35"/><g fill="#17191C"><polygon points="12,10 27.43,19 12,19"/><polygon points="12,21.5 31.71,21.5 36,24 31.71,26.5 12,26.5"/><polygon points="12,29 27.43,29 12,38"/><circle cx="37" cy="36" r="3"/></g></symbol>
+    <symbol id="t-datamorph" viewBox="0 0 48 48"><polygon points="0,0 40,0 48,8 48,48 0,48" fill="#FFC83D"/><g fill="#17191C"><rect x="7" y="7" width="10" height="10"/><rect x="21" y="7" width="10" height="10" rx="1.25"/><rect x="35" y="7" width="10" height="10" rx="2.5"/><rect x="7" y="21" width="10" height="10" rx="1.25"/><rect x="21" y="21" width="10" height="10" rx="2.5"/><rect x="35" y="21" width="10" height="10" rx="3.75"/><rect x="7" y="35" width="10" height="10" rx="2.5"/><rect x="21" y="35" width="10" height="10" rx="3.75"/><rect x="35" y="35" width="10" height="10" rx="5"/></g></symbol>
+    <symbol id="t-pitchscope" viewBox="0 0 48 48"><polygon points="0,0 40,0 48,8 48,48 0,48" fill="#25C6D9"/><circle cx="24" cy="24" r="13" fill="none" stroke="#17191C" stroke-width="4"/><path d="M22 5h4v7h-4z M22 36h4v7h-4z M5 22h7v4H5z M36 22h7v4h-7z" fill="#17191C"/><circle cx="28" cy="20" r="3.5" fill="#17191C"/></symbol>
+    <symbol id="t-dimension" viewBox="0 0 48 48"><polygon points="0,0 40,0 48,8 48,48 0,48" fill="#6B50FF"/><g fill="#FBF8F1"><polygon points="24,24 40,32 24,40 8,32" opacity=".35"/><polygon points="24,16 40,24 24,32 8,24" opacity=".65"/><polygon points="24,8 40,16 24,24 8,16"/></g><line x1="32" y1="12" x2="16" y2="20" stroke="#6B50FF" stroke-width="2"/></symbol>
+    <symbol id="t-nutool" viewBox="0 0 48 48"><polygon points="0,0 40,0 48,8 48,48 0,48" fill="#FF4F9A"/><g fill="#17191C"><polygon points="7,40 17,40 12,31"/><polygon points="19,18 29,18 24,9"/><polygon points="31,40 41,40 36,31"/><circle cx="24" cy="36" r="3"/></g><path d="M14 28 L21 20 M27 20 L34 28" fill="none" stroke="#17191C" stroke-width="3" stroke-dasharray="3 2.5"/></symbol>
   </defs>
 </svg>
 
@@ -159,7 +180,8 @@
     <span>BNN Power Tools</span>
   </a>
   <nav aria-label="Main">
-    <a href="#tools">Tools</a>
+    <a href="#platform">Platform</a>
+    <a href="#instruments">Instruments</a>
     <a href="#principles">Principles</a>
     <a href="#status">Status</a>
     <a href="https://github.com/BNN-Power-Tools">GitHub</a>
@@ -173,9 +195,9 @@
       <div>
         <p class="plate eyebrow">BNN Power Tools · Vol. 01</p>
         <h1>Football analysis deserves <em>better tools.</em></h1>
-        <p class="lead">A growing collection of focused instruments for football video, data, visualisation and spatial analysis. Each tool does one job, has a character of its own, and is honest about whether it's a concept, an experiment or a release.</p>
+        <p class="lead">One platform at the core, with focused instruments on top. The platform keeps match video and data together in one place. Each instrument does one job with it, from clipping video to designing training drills.</p>
         <div class="ctas">
-          <a class="btn btn-primary" href="#tools">See the tools</a>
+          <a class="btn btn-primary" href="#instruments">See the instruments</a>
           <a class="btn btn-secondary" href="https://github.com/BNN-Power-Tools">Follow development</a>
         </div>
       </div>
@@ -186,100 +208,140 @@
     </div>
   </div>
 
-  <section id="tools" class="band-ink">
+  <section id="platform" class="band-ink">
     <div class="wrap">
       <div class="sec-head">
-        <p class="plate eyebrow">In the case</p>
-        <h2>One tool, one job, done properly.</h2>
-        <p>Every tool belongs to a family and carries a catalogue code. Video tools are warm, visualisation tools are blue, and the code never changes.</p>
+        <p class="plate eyebrow">The platform</p>
+        <h2>One core. Many instruments.</h2>
+        <p>The platform is where your matches live: video and data, synced and stored once. Instruments plug into it. They read from the same matches and write their work back, so a clip, a board and a drill can all point to the same moment.</p>
       </div>
-      <p class="notice"><span class="plate">Note</span><span>Nothing here is released yet. All four tools are concepts we are designing and exploring. Their names are working titles and may change.</span></p>
-      <div class="tools">
-        <article class="card notch">
-          <div class="card-top">
-            <svg viewBox="0 0 48 48" role="img" aria-label="VideoFX icon"><polygon points="0,0 40,0 48,8 48,48 0,48" fill="#FF6B35"/><g fill="#17191C"><polygon points="12,10 27.43,19 12,19"/><polygon points="12,21.5 31.71,21.5 36,24 31.71,26.5 12,26.5"/><polygon points="12,29 27.43,29 12,38"/><circle cx="37" cy="36" r="3"/></g></svg>
-            <span class="badge b-concept">Concept</span>
-          </div>
-          <div class="card-body">
-            <p class="plate muted">VID·01 · Video</p>
-            <h3><span class="t-shear">VideoFX</span></h3>
-            <p>Event data, drawn onto match video. Choose the events and it finds the moments, then turns them into clips and overlays.</p>
-          </div>
-          <div class="bandstrip" style="background:linear-gradient(90deg,#FF6B35 0 16.66%,#FF6549 0 33.33%,#FF605D 0 50%,#FF5A72 0 66.66%,#FF5586 0 83.33%,#FF4F9A 0)"></div>
-          <div class="card-foot plate"><span class="muted">Video</span><span>Concept</span></div>
-        </article>
-
-        <article class="card notch">
-          <div class="card-top">
-            <svg viewBox="0 0 48 48" role="img" aria-label="DataMorph icon"><polygon points="0,0 40,0 48,8 48,48 0,48" fill="#FFC83D"/><g fill="#17191C"><rect x="7" y="7" width="10" height="10"/><rect x="21" y="7" width="10" height="10" rx="1.25"/><rect x="35" y="7" width="10" height="10" rx="2.5"/><rect x="7" y="21" width="10" height="10" rx="1.25"/><rect x="21" y="21" width="10" height="10" rx="2.5"/><rect x="35" y="21" width="10" height="10" rx="3.75"/><rect x="7" y="35" width="10" height="10" rx="2.5"/><rect x="21" y="35" width="10" height="10" rx="3.75"/><rect x="35" y="35" width="10" height="10" rx="5"/></g></svg>
-            <span class="badge b-concept">Concept</span>
-          </div>
-          <div class="card-body">
-            <p class="plate muted">DAT·01 · Data</p>
-            <h3 aria-label="DataMorph"><span aria-hidden="true" style="font-weight:250">D</span><span aria-hidden="true" style="font-weight:330">a</span><span aria-hidden="true" style="font-weight:410">t</span><span aria-hidden="true" style="font-weight:490">a</span><span aria-hidden="true" style="font-weight:570">M</span><span aria-hidden="true" style="font-weight:650">o</span><span aria-hidden="true" style="font-weight:730">r</span><span aria-hidden="true" style="font-weight:810">p</span><span aria-hidden="true" style="font-weight:900">h</span></h3>
-            <p>Reshape football data without writing the same script again. Convert, clean and combine provider data into one model, with every step visible.</p>
-          </div>
-          <div class="bandstrip" style="background:linear-gradient(90deg,#FFC83D 0 16.66%,#DCCD52 0 33.33%,#B9D268 0 50%,#95D67D 0 66.66%,#72DB93 0 83.33%,#4FE0A8 0)"></div>
-          <div class="card-foot plate"><span class="muted">Data</span><span>Concept</span></div>
-        </article>
-
-        <article class="card notch">
-          <div class="card-top">
-            <svg viewBox="0 0 48 48" role="img" aria-label="PitchScope icon"><polygon points="0,0 40,0 48,8 48,48 0,48" fill="#25C6D9"/><circle cx="24" cy="24" r="13" fill="none" stroke="#17191C" stroke-width="4"/><path d="M22 5h4v7h-4z M22 36h4v7h-4z M5 22h7v4H5z M36 22h7v4h-7z" fill="#17191C"/><circle cx="28" cy="20" r="3.5" fill="#17191C"/></svg>
-            <span class="badge b-concept">Concept</span>
-          </div>
-          <div class="card-body">
-            <p class="plate muted">VIS·01 · Visualisation</p>
-            <h3 class="t-wide">PitchScope</h3>
-            <p>Pitch graphics that are accurate first and beautiful second: shot maps, pass networks and contour maps on a geometrically correct pitch.</p>
-          </div>
-          <div class="bandstrip" style="background:linear-gradient(90deg,#25C6D9 0 16.66%,#27B1E1 0 33.33%,#299BE8 0 50%,#2B86F0 0 66.66%,#2D70F7 0 83.33%,#2F5BFF 0)"></div>
-          <div class="card-foot plate"><span class="muted">Visualisation</span><span>Concept</span></div>
-        </article>
-
-        <article class="card notch">
-          <div class="card-top">
-            <svg viewBox="0 0 48 48" role="img" aria-label="Dimension icon"><polygon points="0,0 40,0 48,8 48,48 0,48" fill="#6B50FF"/><g fill="#FBF8F1"><polygon points="24,24 40,32 24,40 8,32" opacity=".35"/><polygon points="24,16 40,24 24,32 8,24" opacity=".65"/><polygon points="24,8 40,16 24,24 8,16"/></g><line x1="32" y1="12" x2="16" y2="20" stroke="#6B50FF" stroke-width="2"/></svg>
-            <span class="badge b-concept">Concept</span>
-          </div>
-          <div class="card-body">
-            <p class="plate muted">DIM·01 · Dimension</p>
-            <h3 class="t-extrude">Dimension</h3>
-            <p>See a match in space and time at once. Explore tracking data as a volume: scrub through phases, slice by time, compare shapes.</p>
-          </div>
-          <div class="bandstrip" style="background:linear-gradient(90deg,#6B50FF 0 16.66%,#5D68F7 0 33.33%,#4F7FF0 0 50%,#4197E8 0 66.66%,#33AEE1 0 83.33%,#25C6D9 0)"></div>
-          <div class="card-foot plate"><span class="muted">Dimension</span><span>Concept</span></div>
-        </article>
-
-        <div class="slot">
-          <p class="plate muted">DEV·— · Developer</p>
-          <h3>The next tool</h3>
-          <p>A slot is kept open for developer tools: data conversion, libraries and APIs. Nothing is assigned yet.</p>
+      <div class="platform-diagram">
+        <div class="inst-row" role="list" aria-label="Instruments">
+          <a class="inst-chip" role="listitem" href="#videofx"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#t-videofx"/></svg><span>VideoFX<small>VID·01</small></span></a>
+          <a class="inst-chip" role="listitem" href="#datamorph"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#t-datamorph"/></svg><span>DataMorph<small>DAT·01</small></span></a>
+          <a class="inst-chip" role="listitem" href="#pitchscope"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#t-pitchscope"/></svg><span>PitchScope<small>VIS·01</small></span></a>
+          <a class="inst-chip" role="listitem" href="#dimension"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#t-dimension"/></svg><span>Dimension<small>DIM·01</small></span></a>
+          <a class="inst-chip" role="listitem" href="#nutool"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#t-nutool"/></svg><span>NuTool<small>TRN·01</small></span></a>
+        </div>
+        <p class="plate link" aria-hidden="true">↑ read matches · write work back ↓</p>
+        <div class="core notch">
+          <div class="strip" role="presentation"></div>
+          <div class="core-head"><h3>The BNN Power Tools platform</h3><span class="badge b-concept">Concept</span></div>
+          <p>Match video and event and tracking data, unified per match and kept as one growing record. Every event links to its moment in the video, and every clip carries its data.</p>
+          <div class="core-tags"><span>match video</span><span>event data</span><span>tracking data</span><span>one record per match</span></div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="principles">
+  <section id="instruments">
     <div class="wrap">
       <div class="sec-head">
-        <p class="plate eyebrow">How we build</p>
-        <h2>Instruments, not platforms.</h2>
+        <p class="plate eyebrow">The instruments</p>
+        <h2>One instrument, one job, done properly.</h2>
+        <p>Each instrument runs on the platform and shares its matches. Every one belongs to a family and carries a catalogue code that never changes.</p>
       </div>
-      <div class="principles">
-        <div class="principle"><span class="plate muted">01</span><h3>One tool, one job</h3><p>Each tool does a job you could name in one sentence, and does it properly.</p></div>
-        <div class="principle"><span class="plate muted">02</span><h3>Show the working</h3><p>Methods, data sources and limitations are documented, not hidden.</p></div>
-        <div class="principle"><span class="plate muted">03</span><h3>Built on the pitch</h3><p>Everything is drawn on football's real geometry: 105 × 68, the 9.15 m circle, the 16.5 m box.</p></div>
-        <div class="principle"><span class="plate muted">04</span><h3>Honest labels</h3><p>Every tool says whether it's a concept, an experiment or a release. When in doubt, the less mature label wins.</p></div>
+      <p class="notice"><span class="plate">Note</span><span>Nothing here is released yet. The platform and all five instruments are concepts we are designing and testing. Their names are working titles and may change.</span></p>
+      <div class="tools">
+        <article class="card notch" id="videofx">
+          <div class="card-top">
+            <svg viewBox="0 0 48 48" role="img" aria-label="VideoFX icon"><use href="#t-videofx"/></svg>
+            <span class="badge b-concept">Concept</span>
+          </div>
+          <div class="card-body">
+            <p class="plate muted">VID·01 · Video</p>
+            <h3><span class="t-shear">VideoFX</span></h3>
+            <p>Event data, drawn onto match video. Pick events from the platform and VideoFX finds the moments, then turns them into clips and overlays.</p>
+          </div>
+          <div class="bandstrip" style="background:linear-gradient(90deg,#FF6B35 0 16.66%,#FF6549 0 33.33%,#FF605D 0 50%,#FF5A72 0 66.66%,#FF5586 0 83.33%,#FF4F9A 0)"></div>
+          <div class="card-foot plate"><span class="muted">Video</span><span>Concept</span></div>
+        </article>
+
+        <article class="card notch" id="datamorph">
+          <div class="card-top">
+            <svg viewBox="0 0 48 48" role="img" aria-label="DataMorph icon"><use href="#t-datamorph"/></svg>
+            <span class="badge b-concept">Concept</span>
+          </div>
+          <div class="card-body">
+            <p class="plate muted">DAT·01 · Data</p>
+            <h3 aria-label="DataMorph"><span aria-hidden="true" style="font-weight:250">D</span><span aria-hidden="true" style="font-weight:330">a</span><span aria-hidden="true" style="font-weight:410">t</span><span aria-hidden="true" style="font-weight:490">a</span><span aria-hidden="true" style="font-weight:570">M</span><span aria-hidden="true" style="font-weight:650">o</span><span aria-hidden="true" style="font-weight:730">r</span><span aria-hidden="true" style="font-weight:810">p</span><span aria-hidden="true" style="font-weight:900">h</span></h3>
+            <p>Your data, accumulating match by match. DataMorph brings in event and tracking data from every match and grows it into one consistent record, so trends and comparisons are there when you need them.</p>
+          </div>
+          <div class="bandstrip" style="background:linear-gradient(90deg,#FFC83D 0 16.66%,#DCCD52 0 33.33%,#B9D268 0 50%,#95D67D 0 66.66%,#72DB93 0 83.33%,#4FE0A8 0)"></div>
+          <div class="card-foot plate"><span class="muted">Data</span><span>Concept</span></div>
+        </article>
+
+        <article class="card notch" id="pitchscope">
+          <div class="card-top">
+            <svg viewBox="0 0 48 48" role="img" aria-label="PitchScope icon"><use href="#t-pitchscope"/></svg>
+            <span class="badge b-concept">Concept</span>
+          </div>
+          <div class="card-body">
+            <p class="plate muted">VIS·01 · Visualisation</p>
+            <h3 class="t-wide">PitchScope</h3>
+            <p>Tactics boards for coaches and analysts. Set up shapes and movements on a geometrically correct pitch, starting from real positions in your matches.</p>
+          </div>
+          <div class="bandstrip" style="background:linear-gradient(90deg,#25C6D9 0 16.66%,#27B1E1 0 33.33%,#299BE8 0 50%,#2B86F0 0 66.66%,#2D70F7 0 83.33%,#2F5BFF 0)"></div>
+          <div class="card-foot plate"><span class="muted">Visualisation</span><span>Concept</span></div>
+        </article>
+
+        <article class="card notch" id="dimension">
+          <div class="card-top">
+            <svg viewBox="0 0 48 48" role="img" aria-label="Dimension icon"><use href="#t-dimension"/></svg>
+            <span class="badge b-concept">Concept</span>
+          </div>
+          <div class="card-body">
+            <p class="plate muted">DIM·01 · Dimension</p>
+            <h3 class="t-extrude">Dimension</h3>
+            <p>Data layers for the tactics board. Stack heatmaps, passing lanes, pitch control and tracking data on a PitchScope board, one layer at a time.</p>
+          </div>
+          <div class="bandstrip" style="background:linear-gradient(90deg,#6B50FF 0 16.66%,#5D68F7 0 33.33%,#4F7FF0 0 50%,#4197E8 0 66.66%,#33AEE1 0 83.33%,#25C6D9 0)"></div>
+          <div class="card-foot plate"><span class="muted">Dimension</span><span>Concept</span></div>
+        </article>
+
+        <article class="card notch" id="nutool">
+          <div class="card-top">
+            <svg viewBox="0 0 48 48" role="img" aria-label="NuTool icon"><use href="#t-nutool"/></svg>
+            <span class="badge b-concept">Concept</span>
+          </div>
+          <div class="card-body">
+            <p class="plate muted">TRN·01 · Training</p>
+            <h3>NuTool</h3>
+            <p>Training drills designed from your matches. Turn patterns found in video and data into drills, with the clips that show players why.</p>
+          </div>
+          <div class="bandstrip" style="background:linear-gradient(90deg,#FF4F9A 0 16.66%,#FF6787 0 33.33%,#FF7F75 0 50%,#FF9862 0 66.66%,#FFB050 0 83.33%,#FFC83D 0)"></div>
+          <div class="card-foot plate"><span class="muted">Training</span><span>Concept</span></div>
+        </article>
+
+        <div class="slot">
+          <p class="plate muted">DEV·— · Developer</p>
+          <h3>The next instrument</h3>
+          <p>A slot is kept open for developer instruments: data conversion, libraries and APIs on top of the platform. Nothing is assigned yet.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="status" class="band-ink">
+  <section id="principles" class="band-ink">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="plate eyebrow">How we build</p>
+        <h2>Built from real matches.</h2>
+      </div>
+      <div class="principles">
+        <div class="principle"><span class="plate muted">01</span><h3>Based on actual matches</h3><p>Every instrument starts from real match video and data, not idealised examples or textbook diagrams.</p></div>
+        <div class="principle"><span class="plate muted">02</span><h3>Works in practice over theory</h3><p>If it doesn't help in the team meeting or on the training pitch, it doesn't ship. Useful beats elegant.</p></div>
+        <div class="principle"><span class="plate muted">03</span><h3>Continuous evolution</h3><p>Instruments are released early, labelled honestly and improved match by match.</p></div>
+        <div class="principle"><span class="plate muted">04</span><h3>Video and data, unified</h3><p>Video and data live together on the platform. Every event links to its moment, and every clip carries its data.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="status">
     <div class="wrap">
       <div class="sec-head">
         <p class="plate eyebrow">Reading the labels</p>
-        <h2>The badge fills up as a tool matures.</h2>
+        <h2>The badge fills up as an instrument matures.</h2>
       </div>
       <div class="legend">
         <div><span><span class="badge b-concept">Concept</span></span><span>An idea with design work. No usable software yet.</span></div>
@@ -297,7 +359,7 @@
   <div class="strip" role="presentation"></div>
   <div class="wrap foot">
     <svg viewBox="0 0 105 68" role="img" aria-label="BNN"><use href="#bnn"/></svg>
-    <p>BNN Power Tools · Vol. 01 · All tools shown are concepts.</p>
+    <p>BNN Power Tools · Vol. 01 · The platform and all instruments shown are concepts.</p>
   </div>
 </footer>
 
