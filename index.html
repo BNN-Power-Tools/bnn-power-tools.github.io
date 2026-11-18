@@ -118,6 +118,10 @@
   .foot { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; padding-top: 32px; }
   .foot svg { width: 56px; height: auto; color: var(--paper); }
   .foot p { color: var(--ink-400); font-size: 14px; }
+  .foot-text { display: grid; gap: 6px; text-align: right; }
+  @media (max-width: 640px) { .foot-text { text-align: left; } }
+  .foot .privacy { font-size: 12.5px; }
+  .hit { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
   .platform-diagram { display: grid; gap: 12px; }
   .inst-row { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
   .inst-chip { display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: var(--ink-800); border: 1px solid var(--ink-700); font: 700 15px/1.15 var(--f-sans); text-decoration: none; min-width: 0; }
@@ -359,8 +363,13 @@
   <div class="strip" role="presentation"></div>
   <div class="wrap foot">
     <svg viewBox="0 0 105 68" role="img" aria-label="BNN"><use href="#bnn"/></svg>
-    <p>BNN Power Tools · Vol. 01 · The platform and all instruments shown are concepts.</p>
+    <div class="foot-text">
+      <p>BNN Power Tools · Vol. 01 · The platform and all instruments shown are concepts.</p>
+      <p class="privacy">Visits to this page are counted with <a href="https://github.com/silentsoft/hits">hits.sh</a>, an open-source hit counter. No cookies, no tracking across sites.</p>
+    </div>
   </div>
+  <!-- Visit counter: one invisible request per page view. Stats: https://hits.sh/bnn-power-tools.github.io/ -->
+  <img class="hit" src="https://hits.sh/bnn-power-tools.github.io.svg" alt="" width="1" height="1" referrerpolicy="no-referrer" aria-hidden="true">
 </footer>
 
 </body>
