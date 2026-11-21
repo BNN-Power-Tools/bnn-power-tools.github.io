@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>BNN Power Tools</title>
-<meta name="description" content="Match video and data, together in one place. A platform with four focused instruments on top: TouchlineFX for clipping and telestration, MatchMorph for live event data and metrics, PitchScope for tactics boards from real match situations, and HalfSpace for tracking data and models. All in concept stage.">
+<meta name="description" content="Match video and data, together in one place. A platform with four focused instruments on top: TouchlineFX for clipping and telestration, MatchMorph for live event data and metrics, PitchScope for tactics boards from real match situations, and HalfSpace for tracking data and models. TouchlineFX and PitchScope are in preview; MatchMorph and HalfSpace are experiments.">
 <meta name="theme-color" content="#17191C">
 <meta property="og:title" content="BNN Power Tools">
 <meta property="og:description" content="Match video and data, together.">
@@ -167,6 +167,7 @@
   .car-btn:hover:not(:disabled) { border-color: var(--paper); }
   .car-btn:disabled { opacity: .35; cursor: default; }
   .car-btn:focus-visible { outline: 2px solid var(--lime); outline-offset: -4px; }
+  .slot-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
 </style>
 </head>
 <body>
@@ -272,7 +273,7 @@
         <h2>One instrument, one job, done properly.</h2>
         <p>Each instrument works on video and data together, straight from the platform. Every one belongs to a family and carries a catalogue code that never changes.</p>
       </div>
-      <p class="notice"><span class="plate">Note</span><span>Nothing here is released yet. The platform and all four instruments are concepts we are designing and testing. Their names are working titles and may change.</span></p>
+      <p class="notice"><span class="plate">Note</span><span>Nothing is publicly released yet. TouchlineFX and PitchScope are in preview, usable by invitation. MatchMorph and HalfSpace are working experiments. The next instrument and the platform itself are still concepts. Names are working titles and may change.</span></p>
       <div class="tools">
         <article class="card notch" id="touchlinefx" style="--fam:#FF6B35">
           <div class="carousel" aria-roledescription="carousel" aria-label="TouchlineFX images">
@@ -300,7 +301,7 @@
           </div>
           <div class="card-top">
             <svg viewBox="0 0 48 48" role="img" aria-label="TouchlineFX icon"><use href="#t-videofx"/></svg>
-            <span class="badge b-concept">Concept</span>
+            <span class="badge b-preview">Preview</span>
           </div>
           <div class="card-body">
             <p class="plate muted">VID·01 · Video</p>
@@ -309,7 +310,7 @@
             <ul class="feats"><li>Clipping and advanced telestration</li><li>Colour mapping, perspective-correct drawing and player tracking</li><li>Graphics annotated with match data</li></ul>
           </div>
           <div class="bandstrip" style="background:linear-gradient(90deg,#FF6B35 0 16.66%,#FF6549 0 33.33%,#FF605D 0 50%,#FF5A72 0 66.66%,#FF5586 0 83.33%,#FF4F9A 0)"></div>
-          <div class="card-foot plate"><span class="muted">Video</span><span>Concept</span></div>
+          <div class="card-foot plate"><span class="muted">Video</span><span>Preview</span></div>
         </article>
         <article class="card notch" id="matchmorph" style="--fam:#FFC83D">
           <div class="carousel" aria-roledescription="carousel" aria-label="MatchMorph images">
@@ -337,7 +338,7 @@
           </div>
           <div class="card-top">
             <svg viewBox="0 0 48 48" role="img" aria-label="MatchMorph icon"><use href="#t-datamorph"/></svg>
-            <span class="badge b-concept">Concept</span>
+            <span class="badge b-experiment">Experiment</span>
           </div>
           <div class="card-body">
             <p class="plate muted">DAT·01 · Data</p>
@@ -346,7 +347,7 @@
             <ul class="feats"><li>Event data overlaid on match video in real time</li><li>Calculated metrics from advanced data models</li><li>Aggregated and cumulative stats: dynamic areas, passing networks, player combinations and possession chains</li></ul>
           </div>
           <div class="bandstrip" style="background:linear-gradient(90deg,#FFC83D 0 16.66%,#DCCD52 0 33.33%,#B9D268 0 50%,#95D67D 0 66.66%,#72DB93 0 83.33%,#4FE0A8 0)"></div>
-          <div class="card-foot plate"><span class="muted">Data</span><span>Concept</span></div>
+          <div class="card-foot plate"><span class="muted">Data</span><span>Experiment</span></div>
         </article>
         <article class="card notch" id="pitchscope" style="--fam:#25C6D9">
           <div class="carousel" aria-roledescription="carousel" aria-label="PitchScope images">
@@ -374,7 +375,7 @@
           </div>
           <div class="card-top">
             <svg viewBox="0 0 48 48" role="img" aria-label="PitchScope icon"><use href="#t-pitchscope"/></svg>
-            <span class="badge b-concept">Concept</span>
+            <span class="badge b-preview">Preview</span>
           </div>
           <div class="card-body">
             <p class="plate muted">VIS·01 · Visualisation</p>
@@ -383,7 +384,7 @@
             <ul class="feats"><li>Start a board from an actual moment in a match</li><li>Player positions taken from the match, on a geometrically correct pitch</li><li>The video moment one click away</li></ul>
           </div>
           <div class="bandstrip" style="background:linear-gradient(90deg,#25C6D9 0 16.66%,#27B1E1 0 33.33%,#299BE8 0 50%,#2B86F0 0 66.66%,#2D70F7 0 83.33%,#2F5BFF 0)"></div>
-          <div class="card-foot plate"><span class="muted">Visualisation</span><span>Concept</span></div>
+          <div class="card-foot plate"><span class="muted">Visualisation</span><span>Preview</span></div>
         </article>
         <article class="card notch" id="halfspace" style="--fam:#9C8BFF">
           <div class="carousel" aria-roledescription="carousel" aria-label="HalfSpace images">
@@ -411,7 +412,7 @@
           </div>
           <div class="card-top">
             <svg viewBox="0 0 48 48" role="img" aria-label="HalfSpace icon"><use href="#t-dimension"/></svg>
-            <span class="badge b-concept">Concept</span>
+            <span class="badge b-experiment">Experiment</span>
           </div>
           <div class="card-body">
             <p class="plate muted">DIM·01 · Dimension</p>
@@ -420,11 +421,11 @@
             <ul class="feats"><li>Tracking data overlaid on match video</li><li>Advanced real-time tracking models such as pitch control and possession value</li></ul>
           </div>
           <div class="bandstrip" style="background:linear-gradient(90deg,#6B50FF 0 16.66%,#5D68F7 0 33.33%,#4F7FF0 0 50%,#4197E8 0 66.66%,#33AEE1 0 83.33%,#25C6D9 0)"></div>
-          <div class="card-foot plate"><span class="muted">Dimension</span><span>Concept</span></div>
+          <div class="card-foot plate"><span class="muted">Dimension</span><span>Experiment</span></div>
         </article>
 
         <div class="slot">
-          <p class="plate muted">DEV·— · Developer</p>
+          <div class="slot-head"><p class="plate muted">DEV·— · Developer</p><span class="badge b-concept">Concept</span></div>
           <h3>The next instrument</h3>
           <p>A slot is kept open for developer instruments: data conversion, libraries and APIs on top of the platform. Nothing is assigned yet.</p>
         </div>
@@ -470,7 +471,7 @@
   <div class="wrap foot">
     <svg viewBox="0 0 105 68" role="img" aria-label="BNN"><use href="#bnn"/></svg>
     <div class="foot-text">
-      <p>BNN Power Tools · Vol. 01 · The platform and all instruments shown are concepts.</p>
+      <p>BNN Power Tools · Vol. 01 · Nothing is publicly released yet. Every instrument shows its status.</p>
       <p class="privacy">Visits to this page are counted with <a href="https://github.com/silentsoft/hits">hits.sh</a>, an open-source hit counter. No cookies, no tracking across sites.</p>
       <!-- Visit counter: each page view loads this badge once and adds one hit. -->
       <a class="hits" href="https://hits.sh/bnn-power-tools.github.io/" aria-label="Visit counter: today and total"><img alt="Visits today and total" src="https://hits.sh/bnn-power-tools.github.io.svg?view=today-total&amp;style=flat-square&amp;label=visits&amp;color=B9F227&amp;labelColor=17191C" height="20" referrerpolicy="no-referrer"></a>
