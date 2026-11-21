@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>BNN Power Tools</title>
-<meta name="description" content="Match video and data, together in one place. A platform that keeps them linked, with focused instruments on top: clips, accumulating data, tactics boards, data layers and training drills. All in concept stage.">
+<meta name="description" content="Match video and data, together in one place. A platform with four focused instruments on top: TouchlineFX for clipping and telestration, MatchMorph for live event data and metrics, PitchScope for tactics boards from real match situations, and HalfSpace for tracking data and models. All in concept stage.">
 <meta name="theme-color" content="#17191C">
 <meta property="og:title" content="BNN Power Tools">
 <meta property="og:description" content="Match video and data, together.">
@@ -140,6 +140,10 @@
   .core-tags { display: flex; flex-wrap: wrap; gap: 8px; }
   .core-tags span { font: 500 12px/1.5 var(--f-mono); background: #E8E0CF; padding: 2px 8px; }
   .card h3:not([class]) { font-weight: 800; }
+  .card .job { color: var(--paper); font-size: 16px; font-weight: 500; }
+  .feats { list-style: none; margin: 2px 0 0; padding: 0; display: grid; gap: 7px; font-size: 14.5px; line-height: 1.45; color: var(--ink-300); }
+  .feats li { display: grid; grid-template-columns: 6px 1fr; gap: 10px; }
+  .feats li::before { content: ""; width: 6px; height: 6px; margin-top: .5em; background: var(--fam, var(--lime)); }
 </style>
 </head>
 <body>
@@ -167,7 +171,6 @@
     <symbol id="t-datamorph" viewBox="0 0 48 48"><polygon points="0,0 40,0 48,8 48,48 0,48" fill="#FFC83D"/><g fill="#17191C"><rect x="7" y="7" width="10" height="10"/><rect x="21" y="7" width="10" height="10" rx="1.25"/><rect x="35" y="7" width="10" height="10" rx="2.5"/><rect x="7" y="21" width="10" height="10" rx="1.25"/><rect x="21" y="21" width="10" height="10" rx="2.5"/><rect x="35" y="21" width="10" height="10" rx="3.75"/><rect x="7" y="35" width="10" height="10" rx="2.5"/><rect x="21" y="35" width="10" height="10" rx="3.75"/><rect x="35" y="35" width="10" height="10" rx="5"/></g></symbol>
     <symbol id="t-pitchscope" viewBox="0 0 48 48"><polygon points="0,0 40,0 48,8 48,48 0,48" fill="#25C6D9"/><circle cx="24" cy="24" r="13" fill="none" stroke="#17191C" stroke-width="4"/><path d="M22 5h4v7h-4z M22 36h4v7h-4z M5 22h7v4H5z M36 22h7v4h-7z" fill="#17191C"/><circle cx="28" cy="20" r="3.5" fill="#17191C"/></symbol>
     <symbol id="t-dimension" viewBox="0 0 48 48"><polygon points="0,0 40,0 48,8 48,48 0,48" fill="#6B50FF"/><g fill="#FBF8F1"><polygon points="24,24 40,32 24,40 8,32" opacity=".35"/><polygon points="24,16 40,24 24,32 8,24" opacity=".65"/><polygon points="24,8 40,16 24,24 8,16"/></g><line x1="32" y1="12" x2="16" y2="20" stroke="#6B50FF" stroke-width="2"/></symbol>
-    <symbol id="t-nutool" viewBox="0 0 48 48"><polygon points="0,0 40,0 48,8 48,48 0,48" fill="#FF4F9A"/><g fill="#17191C"><polygon points="7,40 17,40 12,31"/><polygon points="19,18 29,18 24,9"/><polygon points="31,40 41,40 36,31"/><circle cx="24" cy="36" r="3"/></g><path d="M14 28 L21 20 M27 20 L34 28" fill="none" stroke="#17191C" stroke-width="3" stroke-dasharray="3 2.5"/></symbol>
   </defs>
 </svg>
 
@@ -201,7 +204,7 @@
       <div>
         <p class="plate eyebrow">BNN Power Tools · Vol. 01</p>
         <h1>Match video and data, <em>together.</em></h1>
-        <p class="lead">Football analysis deserves better tools, and ours start from one idea: video and data belong in the same place. The platform keeps every match's video and data together, and focused instruments do one job each on top of it, from clipping video to designing training drills.</p>
+        <p class="lead">Football analysis deserves better tools, and ours start from one idea: video and data belong in the same place. The platform keeps every match's video and data together, and focused instruments do one job each on top of it, from clipping and telestration to tracking models and tactics boards built from real match situations.</p>
         <div class="ctas">
           <a class="btn btn-primary" href="#instruments">See the instruments</a>
           <a class="btn btn-secondary" href="https://github.com/BNN-Power-Tools">Follow development</a>
@@ -219,15 +222,14 @@
       <div class="sec-head">
         <p class="plate eyebrow">The platform</p>
         <h2>One match. Video and data together.</h2>
-        <p>The platform is where your matches live, with video and data synced and stored together. Instruments plug into it, read the same matches and write their work back, so a clip, a board and a drill all point to the same moment.</p>
+        <p>The platform is where your matches live, with video and data synced and stored together. Instruments plug into it, read the same matches and write their work back, so a clip, a data overlay and a tactics board all point to the same moment.</p>
       </div>
       <div class="platform-diagram">
         <div class="inst-row" role="list" aria-label="Instruments">
-          <a class="inst-chip" role="listitem" href="#videofx"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#t-videofx"/></svg><span>VideoFX<small>VID·01</small></span></a>
-          <a class="inst-chip" role="listitem" href="#datamorph"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#t-datamorph"/></svg><span>DataMorph<small>DAT·01</small></span></a>
+          <a class="inst-chip" role="listitem" href="#touchlinefx"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#t-videofx"/></svg><span>TouchlineFX<small>VID·01</small></span></a>
+          <a class="inst-chip" role="listitem" href="#matchmorph"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#t-datamorph"/></svg><span>MatchMorph<small>DAT·01</small></span></a>
           <a class="inst-chip" role="listitem" href="#pitchscope"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#t-pitchscope"/></svg><span>PitchScope<small>VIS·01</small></span></a>
-          <a class="inst-chip" role="listitem" href="#dimension"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#t-dimension"/></svg><span>Dimension<small>DIM·01</small></span></a>
-          <a class="inst-chip" role="listitem" href="#nutool"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#t-nutool"/></svg><span>NuTool<small>TRN·01</small></span></a>
+          <a class="inst-chip" role="listitem" href="#halfspace"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#t-dimension"/></svg><span>HalfSpace<small>DIM·01</small></span></a>
         </div>
         <p class="plate link" aria-hidden="true">↑ read matches · write work back ↓</p>
         <div class="core notch">
@@ -247,37 +249,37 @@
         <h2>One instrument, one job, done properly.</h2>
         <p>Each instrument works on video and data together, straight from the platform. Every one belongs to a family and carries a catalogue code that never changes.</p>
       </div>
-      <p class="notice"><span class="plate">Note</span><span>Nothing here is released yet. The platform and all five instruments are concepts we are designing and testing. Their names are working titles and may change.</span></p>
+      <p class="notice"><span class="plate">Note</span><span>Nothing here is released yet. The platform and all four instruments are concepts we are designing and testing. Their names are working titles and may change.</span></p>
       <div class="tools">
-        <article class="card notch" id="videofx">
+        <article class="card notch" id="touchlinefx" style="--fam:#FF6B35">
           <div class="card-top">
-            <svg viewBox="0 0 48 48" role="img" aria-label="VideoFX icon"><use href="#t-videofx"/></svg>
+            <svg viewBox="0 0 48 48" role="img" aria-label="TouchlineFX icon"><use href="#t-videofx"/></svg>
             <span class="badge b-concept">Concept</span>
           </div>
           <div class="card-body">
             <p class="plate muted">VID·01 · Video</p>
-            <h3><span class="t-shear">VideoFX</span></h3>
-            <p>Event data, drawn onto match video. Pick events from the platform and VideoFX finds the moments, then turns them into clips and overlays.</p>
+            <h3><span class="t-shear">TouchlineFX</span></h3>
+            <p class="job">Clip, draw and explain match video.</p>
+            <ul class="feats"><li>Clipping and advanced telestration</li><li>Colour mapping, perspective-correct drawing and player tracking</li><li>Graphics annotated with match data</li></ul>
           </div>
           <div class="bandstrip" style="background:linear-gradient(90deg,#FF6B35 0 16.66%,#FF6549 0 33.33%,#FF605D 0 50%,#FF5A72 0 66.66%,#FF5586 0 83.33%,#FF4F9A 0)"></div>
           <div class="card-foot plate"><span class="muted">Video</span><span>Concept</span></div>
         </article>
-
-        <article class="card notch" id="datamorph">
+        <article class="card notch" id="matchmorph" style="--fam:#FFC83D">
           <div class="card-top">
-            <svg viewBox="0 0 48 48" role="img" aria-label="DataMorph icon"><use href="#t-datamorph"/></svg>
+            <svg viewBox="0 0 48 48" role="img" aria-label="MatchMorph icon"><use href="#t-datamorph"/></svg>
             <span class="badge b-concept">Concept</span>
           </div>
           <div class="card-body">
             <p class="plate muted">DAT·01 · Data</p>
-            <h3 aria-label="DataMorph"><span aria-hidden="true" style="font-weight:250">D</span><span aria-hidden="true" style="font-weight:330">a</span><span aria-hidden="true" style="font-weight:410">t</span><span aria-hidden="true" style="font-weight:490">a</span><span aria-hidden="true" style="font-weight:570">M</span><span aria-hidden="true" style="font-weight:650">o</span><span aria-hidden="true" style="font-weight:730">r</span><span aria-hidden="true" style="font-weight:810">p</span><span aria-hidden="true" style="font-weight:900">h</span></h3>
-            <p>Your data, accumulating match by match. DataMorph brings in event and tracking data from every match and grows it into one consistent record, with every number still linked to its moment in the video.</p>
+            <h3 aria-label="MatchMorph"><span aria-hidden="true" style="font-weight:250">M</span><span aria-hidden="true" style="font-weight:322">a</span><span aria-hidden="true" style="font-weight:394">t</span><span aria-hidden="true" style="font-weight:467">c</span><span aria-hidden="true" style="font-weight:539">h</span><span aria-hidden="true" style="font-weight:611">M</span><span aria-hidden="true" style="font-weight:683">o</span><span aria-hidden="true" style="font-weight:756">r</span><span aria-hidden="true" style="font-weight:828">p</span><span aria-hidden="true" style="font-weight:900">h</span></h3>
+            <p class="job">Event data on the video, as it happens.</p>
+            <ul class="feats"><li>Event data overlaid on match video in real time</li><li>Calculated metrics from advanced data models</li><li>Aggregated and cumulative stats: dynamic areas, passing networks, player combinations and possession chains</li></ul>
           </div>
           <div class="bandstrip" style="background:linear-gradient(90deg,#FFC83D 0 16.66%,#DCCD52 0 33.33%,#B9D268 0 50%,#95D67D 0 66.66%,#72DB93 0 83.33%,#4FE0A8 0)"></div>
           <div class="card-foot plate"><span class="muted">Data</span><span>Concept</span></div>
         </article>
-
-        <article class="card notch" id="pitchscope">
+        <article class="card notch" id="pitchscope" style="--fam:#25C6D9">
           <div class="card-top">
             <svg viewBox="0 0 48 48" role="img" aria-label="PitchScope icon"><use href="#t-pitchscope"/></svg>
             <span class="badge b-concept">Concept</span>
@@ -285,38 +287,25 @@
           <div class="card-body">
             <p class="plate muted">VIS·01 · Visualisation</p>
             <h3 class="t-wide">PitchScope</h3>
-            <p>Tactics boards for coaches and analysts. Set up shapes and movements on a geometrically correct pitch, starting from real positions in your matches, with the video moment one click away.</p>
+            <p class="job">A tactics board built from real match situations.</p>
+            <ul class="feats"><li>Start a board from an actual moment in a match</li><li>Player positions taken from the match, on a geometrically correct pitch</li><li>The video moment one click away</li></ul>
           </div>
           <div class="bandstrip" style="background:linear-gradient(90deg,#25C6D9 0 16.66%,#27B1E1 0 33.33%,#299BE8 0 50%,#2B86F0 0 66.66%,#2D70F7 0 83.33%,#2F5BFF 0)"></div>
           <div class="card-foot plate"><span class="muted">Visualisation</span><span>Concept</span></div>
         </article>
-
-        <article class="card notch" id="dimension">
+        <article class="card notch" id="halfspace" style="--fam:#9C8BFF">
           <div class="card-top">
-            <svg viewBox="0 0 48 48" role="img" aria-label="Dimension icon"><use href="#t-dimension"/></svg>
+            <svg viewBox="0 0 48 48" role="img" aria-label="HalfSpace icon"><use href="#t-dimension"/></svg>
             <span class="badge b-concept">Concept</span>
           </div>
           <div class="card-body">
             <p class="plate muted">DIM·01 · Dimension</p>
-            <h3 class="t-extrude">Dimension</h3>
-            <p>Data layers for the tactics board. Stack heatmaps, passing lanes, pitch control and tracking data on a PitchScope board, one layer at a time, and jump to the video behind any of them.</p>
+            <h3 class="t-extrude">HalfSpace</h3>
+            <p class="job">Tracking data, drawn onto the video.</p>
+            <ul class="feats"><li>Tracking data overlaid on match video</li><li>Advanced real-time tracking models such as pitch control and possession value</li></ul>
           </div>
           <div class="bandstrip" style="background:linear-gradient(90deg,#6B50FF 0 16.66%,#5D68F7 0 33.33%,#4F7FF0 0 50%,#4197E8 0 66.66%,#33AEE1 0 83.33%,#25C6D9 0)"></div>
           <div class="card-foot plate"><span class="muted">Dimension</span><span>Concept</span></div>
-        </article>
-
-        <article class="card notch" id="nutool">
-          <div class="card-top">
-            <svg viewBox="0 0 48 48" role="img" aria-label="NuTool icon"><use href="#t-nutool"/></svg>
-            <span class="badge b-concept">Concept</span>
-          </div>
-          <div class="card-body">
-            <p class="plate muted">TRN·01 · Training</p>
-            <h3>NuTool</h3>
-            <p>Training drills designed from your matches. Turn patterns found in video and data into drills, with the clips that show players why.</p>
-          </div>
-          <div class="bandstrip" style="background:linear-gradient(90deg,#FF4F9A 0 16.66%,#FF6787 0 33.33%,#FF7F75 0 50%,#FF9862 0 66.66%,#FFB050 0 83.33%,#FFC83D 0)"></div>
-          <div class="card-foot plate"><span class="muted">Training</span><span>Concept</span></div>
         </article>
 
         <div class="slot">
