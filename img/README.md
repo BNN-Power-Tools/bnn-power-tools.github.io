@@ -2,7 +2,7 @@
 
 Each instrument card on the landing page has an image carousel. Until an image exists, the slide shows a placeholder.
 
-The current images are screenshots of the video-data-combinator prototype (800 × 517). Replace any file to change a slide.
+The current images are screenshots of the video-data-combinator prototype (1400 × 906). Replace any file to change a slide.
 
 To add an image, put it here with this name:
 
