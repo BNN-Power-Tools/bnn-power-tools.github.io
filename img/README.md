@@ -12,7 +12,7 @@ img/<instrument>/<slide number>.jpg   (or .png)
 
 | Instrument | Folder | Slides on the page |
 |---|---|---|
-| TouchlineFX | `img/touchlinefx/` | 1: telestration tools · 2: behind players, on pitch, following a player · 3: possession chain over the video |
+| TouchlineFX | `img/touchlinefx/` | 1: telestration tools · 2: clip list and export · 3: possession chain over the video |
 | MatchMorph | `img/matchmorph/` | 1: event data in sync with video · 2: player metrics · 3: passing network |
 | PitchScope | `img/pitchscope/` | 1: board from a real match frame · 2: team shapes · 3: board with the video frame |
 | HalfSpace | `img/halfspace/` | 1: live tracking map · 2: pitch control · 3: possession value |
